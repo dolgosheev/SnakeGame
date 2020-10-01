@@ -15,11 +15,14 @@ namespace snake
             Z = z;
         }
 
+        public Point()
+        {
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(Z);
         }
-
     }
 }
