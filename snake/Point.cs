@@ -16,6 +16,26 @@ namespace snake
             Z = z;
         }
 
+        public Point(Point p)
+        {
+            X = p.X;
+            Y = p.Y;
+            Z = p.Z;
+        }
+
+        public void Move(int offset, Direction direction)
+        {
+            if (direction == Direction.RIGHT)
+                X += offset;
+            else if(direction == Direction.RIGHT)
+                X -= offset;
+
+            if (direction == Direction.TOP)
+                Y += offset;
+            else if (direction == Direction.BOTTOM)
+                Y += offset;
+        }
+
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);
