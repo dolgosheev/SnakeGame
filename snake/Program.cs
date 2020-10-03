@@ -8,10 +8,14 @@ namespace snake
 
         private static void Main()
         {
-            Point p1 = new Point(0, 0, '1');
-            Point p2 = new Point(0, 2, '2');
-            Point p3 = new Point(2, 0, '3');
-            Point p4 = new Point(2, 2, '4');
+            Console.SetWindowSize(1, 1);
+            Console.SetBufferSize(62, 22);
+            Console.SetWindowSize(62, 22);
+
+            Point p1 = new Point(2, 2, '1');
+            Point p2 = new Point(2, 4, '2');
+            Point p3 = new Point(4, 2, '3');
+            Point p4 = new Point(4, 4, '4');
 
             List<Point> listPoints = new List<Point>();
             
@@ -25,11 +29,17 @@ namespace snake
                 point.Draw();
             }
 
-            HorisontalLine hline = new HorisontalLine(5,10,8,'+');
-            hline.Draw();
+            HorisontalLine upLine = new HorisontalLine(0,60,0,'+');
+            upLine.Draw();
+            HorisontalLine downLine = new HorisontalLine(0, 60, 20, '+');
+            downLine.Draw();
 
-            VerticalLine vline = new VerticalLine(13,0,12,'+');
-            vline.Draw();
+
+
+            VerticalLine leftLine = new VerticalLine(0,0,20,'+');
+            leftLine.Draw();
+            VerticalLine rightLine = new VerticalLine(60, 0, 20, '+');
+            rightLine.Draw();
 
             Console.Read();
         }
