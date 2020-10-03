@@ -1,32 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace snake
 {
     internal class Program
     {
+
         private static void Main()
         {
-            Point p1 = new Point(1, 1, '*');
-            Point p2 = new Point(2, 2, '#');
+            Point p1 = new Point(0, 0, '1');
+            Point p2 = new Point(0, 2, '2');
+            Point p3 = new Point(2, 0, '3');
+            Point p4 = new Point(2, 2, '4');
 
-            p1.Draw();
-            p2.Draw();
+            List<Point> listPoints = new List<Point>();
+            
+            listPoints.Add(p1);
+            listPoints.Add(p2);
+            listPoints.Add(p3);
+            listPoints.Add(p4);
 
-            Move(p1,5,5);
-            p1.Draw();
+            foreach (var point in listPoints)
+            {
+                point.Draw();
+            }
 
             Console.Read();
-        }
-
-        public static void Move(Point p, int dx, int dy)
-        {
-            p.X += dx;
-            p.Y += dy;
-        }
-
-        public static void Reset(Point p)
-        {
-             p = new Point();
         }
 
     }

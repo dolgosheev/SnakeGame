@@ -2,6 +2,7 @@
 
 namespace snake
 {
+
     internal class Point
     {
         public int X;
@@ -13,10 +14,6 @@ namespace snake
             X = x;
             Y = y;
             Z = z;
-        }
-
-        public Point()
-        {
         }
 
         public void Draw()
