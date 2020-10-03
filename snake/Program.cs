@@ -25,6 +25,12 @@ namespace snake
                 point.Draw();
             }
 
+            HorisontalLine hline = new HorisontalLine(5,10,8,'+');
+            hline.Draw();
+
+            VerticalLine vline = new VerticalLine(13,0,12,'+');
+            vline.Draw();
+
             Console.Read();
         }
 
