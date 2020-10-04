@@ -6,26 +6,26 @@ namespace snake
 {
     internal class Snake : Figure
     {
-        private Direction direction;
+        private Direction _direction;
 
-        public Snake(Point tail, int length, Direction _direction)
+        public Snake(Point tail, int length, Direction direction)
         {
-            direction = _direction;
-            _line = new List<Point>();
+            _direction = direction;
+            Line = new List<Point>();
             for (int i = 0; i < length; i++)
             {
                 Point p = new Point(tail);
-                p.Move(i, _direction);
-                _line.Add(p);
+                p.Move(i, direction);
+                Line.Add(p);
             }
         }
 
         internal void Move()
         {
-            Point tail = _line.First();
-            _line.Remove(tail);
+            Point tail = Line.First();
+            Line.Remove(tail);
             Point head = GetNextPoint();
-            _line.Add(head);
+            Line.Add(head);
 
             tail.Clear();
             head.Draw();
@@ -33,18 +33,18 @@ namespace snake
 
         public Point GetNextPoint()
         {
-            Point head = _line.Last();
+            Point head = Line.Last();
             Point nextPoint = new Point(head);
-            nextPoint.Move(1, direction);
+            nextPoint.Move(1, _direction);
             return nextPoint;
         }
 
         internal bool IsHitTail()
         {
-            var head = _line.Last();
-            for (int i = 0; i < _line.Count - 2; i++)
+            Point head = Line.Last();
+            for (int i = 0; i < Line.Count - 2; i++)
             {
-                if (head.IsHit(_line[i]))
+                if (head.IsHit(Line[i]))
                     return true;
             }
 
@@ -56,16 +56,16 @@ namespace snake
             switch (key)
             {
                 case ConsoleKey.LeftArrow:
-                    direction = Direction.LEFT;
+                    _direction = Direction.Left;
                     break;
                 case ConsoleKey.RightArrow:
-                    direction = Direction.RIGHT;
+                    _direction = Direction.Right;
                     break;
                 case ConsoleKey.UpArrow:
-                    direction = Direction.TOP;
+                    _direction = Direction.Top;
                     break;
                 case ConsoleKey.DownArrow:
-                    direction = Direction.BOTTOM;
+                    _direction = Direction.Bottom;
                     break;
             }
             //if (key == ConsoleKey.LeftArrow)
@@ -84,7 +84,7 @@ namespace snake
             if (head.IsHit(food))
             {
                 food.Z = head.Z;
-                _line.Add(food);
+                Line.Add(food);
                 return true;
             }
             else

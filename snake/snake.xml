@@ -4,5 +4,22 @@
         <name>snake</name>
     </assembly>
     <members>
+        <member name="T:snake.Walls">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:snake.Walls.#ctor(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="mapWidth"></param>
+            <param name="mapHeight"></param>
+        </member>
+        <member name="M:snake.Walls.Draw">
+            <summary>
+            
+            </summary>
+        </member>
     </members>
 </doc>

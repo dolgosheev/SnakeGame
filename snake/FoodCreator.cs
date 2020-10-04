@@ -4,10 +4,10 @@ namespace snake
 {
     internal class FoodCreator
     {
-        private  int _mapWidth;
-        private  int _mapHeight;
-        private  char _food;
-        private  Random _rnd = new Random();
+        private readonly int _mapWidth;
+        private readonly int _mapHeight;
+        private readonly char _food;
+        private readonly Random _rnd = new Random();
 
         public FoodCreator(int mapWidth, int mapHeight, char food)
         {
@@ -18,11 +18,10 @@ namespace snake
 
         public Point CreateFood()
         {
-            int x = _rnd.Next(2, _mapWidth - 2);
-            int y = _rnd.Next(2, _mapHeight - 2);
+            int x = _rnd.Next(4, _mapWidth - 4);
+            int y = _rnd.Next(4, _mapHeight - 4);
             return new Point(x, y, _food);
         }
-
 
     }
 }

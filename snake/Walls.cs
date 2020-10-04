@@ -1,31 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace snake
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class Walls
     {
-        List<Figure> wallList;
+        private readonly List<Figure> _wallList;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mapWidth"></param>
+        /// <param name="mapHeight"></param>
         public Walls(int mapWidth, int mapHeight)
         {
-            wallList = new List<Figure>();
+            _wallList = new List<Figure>();
 
-            HorisontalLine upLine = new HorisontalLine(1, mapWidth-1, 1, '-');
-            HorisontalLine downLine = new HorisontalLine(1, mapWidth-1, mapHeight+1, '-');
+            HorisontalLine upLine = new HorisontalLine(1, mapWidth - 1, 1, '-');
+            HorisontalLine downLine = new HorisontalLine(1, mapWidth - 1, mapHeight + 1, '-');
             VerticalLine leftLine = new VerticalLine(1, 2, mapHeight, '|');
-            VerticalLine rightLine = new VerticalLine(mapWidth-1, 2, mapHeight, '|');
+            VerticalLine rightLine = new VerticalLine(mapWidth - 1, 2, mapHeight, '|');
 
-            wallList.Add(upLine);
-            wallList.Add(downLine);
-            wallList.Add(leftLine);
-            wallList.Add(rightLine);
+            _wallList.Add(upLine);
+            _wallList.Add(downLine);
+            _wallList.Add(leftLine);
+            _wallList.Add(rightLine);
         }
 
         internal bool IsHit(Figure figure)
         {
-            foreach (var wall in wallList)
+            foreach (Figure wall in _wallList)
             {
                 if (wall.IsHit(figure))
                 {
@@ -36,9 +43,12 @@ namespace snake
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Draw()
         {
-            foreach (var wall in wallList)
+            foreach (Figure wall in _wallList)
             {
                 wall.Draw();
             }

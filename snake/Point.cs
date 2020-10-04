@@ -25,20 +25,20 @@ namespace snake
 
         public void Move(int offset, Direction direction)
         {
-            if (direction == Direction.RIGHT)
+            if (direction == Direction.Right)
                 X += offset;
-            else if(direction == Direction.LEFT)
+            else if (direction == Direction.Left)
                 X -= offset;
 
-            if (direction == Direction.TOP)
+            if (direction == Direction.Top)
                 Y -= offset;
-            else if (direction == Direction.BOTTOM)
+            else if (direction == Direction.Bottom)
                 Y += offset;
         }
 
         public bool IsHit(Point p)
         {
-            return p.X == this.X && p.Y == this.Y;
+            return p.X == X && p.Y == Y;
         }
 
         public void Draw()

@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace snake
 {
-    class Figure
+    internal class Figure
     {
-        protected List<Point> _line;
+        protected List<Point> Line;
 
         public virtual void Draw()
         {
-            foreach (Point point in _line)
+            foreach (Point point in Line)
             {
                 point.Draw();
             }
@@ -18,7 +16,7 @@ namespace snake
 
         internal bool IsHit(Figure figure)
         {
-            foreach (var point in _line)
+            foreach (Point point in Line)
             {
                 if (figure.IsHit(point))
                     return true;
@@ -28,7 +26,7 @@ namespace snake
 
         private bool IsHit(Point point)
         {
-            foreach (var p in _line)
+            foreach (Point p in Line)
             {
                 if (p.IsHit(point))
                     return true;

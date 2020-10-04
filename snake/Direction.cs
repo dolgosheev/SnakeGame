@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace snake
+﻿namespace snake
 {
-    enum Direction
+    internal enum Direction
     {
-        LEFT,
-        RIGHT,
-        TOP,
-        BOTTOM
+        Left,
+        Right,
+        Top,
+        Bottom
     }
 }
