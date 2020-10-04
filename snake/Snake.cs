@@ -56,6 +56,29 @@ namespace snake
                     direction = Direction.BOTTOM;
                     break;
             }
+            //if (key == ConsoleKey.LeftArrow)
+            //    direction = Direction.LEFT;
+            //else if (key == ConsoleKey.RightArrow)
+            //    direction = Direction.RIGHT;
+            //else if (key == ConsoleKey.UpArrow)
+            //    direction = Direction.TOP;
+            //else if (key == ConsoleKey.DownArrow)
+            //    direction = Direction.BOTTOM;
+        }
+
+        internal bool Eat(Point food)
+        {
+            Point head = GetNextPoint();
+            if (head.IsHit(food))
+            {
+                food.Z = head.Z;
+                _line.Add(food);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
