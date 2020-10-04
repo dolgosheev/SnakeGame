@@ -44,7 +44,7 @@ namespace snake
         public void Draw()
         {
             Console.SetCursorPosition(X, Y);
-            Console.WriteLine(Z);
+            Console.Write(Z);
         }
 
         public void Clear()

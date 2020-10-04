@@ -8,34 +8,29 @@ namespace snake
 
         private static void Main()
         {
-            Console.SetWindowSize(82, 32);
-            Console.SetBufferSize(82, 32);
+            Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight / 2);
+            Console.SetBufferSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight / 2);
 
-            #region wrap
+            int wResolution = Console.BufferWidth - 2;
+            int hResolution = Console.BufferHeight - 2;
 
-            HorisontalLine upLine = new HorisontalLine(0, 80, 0, '-');
-            upLine.Draw();
-            HorisontalLine downLine = new HorisontalLine(0, 80, 30, '-');
-            downLine.Draw();
+            Walls walls = new Walls(wResolution, hResolution);
+            walls.Draw();
 
-            VerticalLine leftLine = new VerticalLine(0, 1, 30, '|');
-            leftLine.Draw();
-            VerticalLine rightLine = new VerticalLine(80, 1, 30, '|');
-            rightLine.Draw();
-
-            #endregion
-
-            Point p1 = new Point(2, 2, '*');
-
-            Snake snake = new Snake(p1, 3, Direction.RIGHT);
+            Point p = new Point(2, 2, '*');
+            Snake snake = new Snake(p, 3, Direction.RIGHT);
             snake.Draw();
 
-            FoodCreator foodCreator = new FoodCreator(80, 30, '$');
+            FoodCreator foodCreator = new FoodCreator(wResolution, hResolution, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
 
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
@@ -47,7 +42,7 @@ namespace snake
                 }
 
                 Thread.Sleep(100);
-                
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();

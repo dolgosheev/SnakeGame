@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace snake
 {
@@ -12,6 +13,13 @@ namespace snake
                 Point p = new Point(x, y, z);
                 _line.Add(p);
             }
+        }
+
+        public override void Draw()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            base.Draw();
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
     }

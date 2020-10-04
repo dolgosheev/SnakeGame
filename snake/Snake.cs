@@ -39,6 +39,18 @@ namespace snake
             return nextPoint;
         }
 
+        internal bool IsHitTail()
+        {
+            var head = _line.Last();
+            for (int i = 0; i < _line.Count - 2; i++)
+            {
+                if (head.IsHit(_line[i]))
+                    return true;
+            }
+
+            return false;
+        }
+
         public void HandleKey(ConsoleKey key)
         {
             switch (key)
