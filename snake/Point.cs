@@ -27,11 +27,11 @@ namespace snake
         {
             if (direction == Direction.RIGHT)
                 X += offset;
-            else if(direction == Direction.RIGHT)
+            else if(direction == Direction.LEFT)
                 X -= offset;
 
             if (direction == Direction.TOP)
-                Y += offset;
+                Y -= offset;
             else if (direction == Direction.BOTTOM)
                 Y += offset;
         }

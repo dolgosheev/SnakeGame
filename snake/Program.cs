@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace snake
@@ -14,12 +13,12 @@ namespace snake
 
             #region wrap
 
-            HorisontalLine upLine = new HorisontalLine(0,60,0,'+');
+            HorisontalLine upLine = new HorisontalLine(0, 60, 0, '+');
             upLine.Draw();
             HorisontalLine downLine = new HorisontalLine(0, 60, 20, '+');
             downLine.Draw();
 
-            VerticalLine leftLine = new VerticalLine(0,0,20,'+');
+            VerticalLine leftLine = new VerticalLine(0, 0, 20, '+');
             leftLine.Draw();
             VerticalLine rightLine = new VerticalLine(60, 0, 20, '+');
             rightLine.Draw();
@@ -30,14 +29,19 @@ namespace snake
 
             Snake snake = new Snake(p1, 3, Direction.RIGHT);
             snake.Draw();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
 
-            Console.Read();
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
+
         }
 
     }

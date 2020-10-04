@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace snake
 {
-    class Snake : Figure
+    internal class Snake : Figure
     {
         private Direction direction;
 
@@ -27,7 +26,7 @@ namespace snake
             _line.Remove(tail);
             Point head = GetNextPoint();
             _line.Add(head);
-            
+
             tail.Clear();
             head.Draw();
         }
@@ -36,9 +35,27 @@ namespace snake
         {
             Point head = _line.Last();
             Point nextPoint = new Point(head);
-            nextPoint.Move(1,direction);
+            nextPoint.Move(1, direction);
             return nextPoint;
         }
 
+        public void HandleKey(ConsoleKey key)
+        {
+            switch (key)
+            {
+                case ConsoleKey.LeftArrow:
+                    direction = Direction.LEFT;
+                    break;
+                case ConsoleKey.RightArrow:
+                    direction = Direction.RIGHT;
+                    break;
+                case ConsoleKey.UpArrow:
+                    direction = Direction.TOP;
+                    break;
+                case ConsoleKey.DownArrow:
+                    direction = Direction.BOTTOM;
+                    break;
+            }
+        }
     }
 }
